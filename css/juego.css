@@ -5,7 +5,7 @@ body {
     width: 940px;
     margin: 5% auto;
     min-height: 100%;
-    /*  background-image: url(../images/adventure.jpg); */
+    background-image: url(../images/adventure.jpg);
 }
 
 ul {
@@ -73,4 +73,18 @@ li::before {
     to {
         opacity: 1;
     }
+}
+
+
+/* MIS ESTILOS */
+
+#juego {
+    height: 600px;
+    width: 600px;
+}
+
+#juego img {
+    height: 200px;
+    width: 200px;
+    float: left;
 }
