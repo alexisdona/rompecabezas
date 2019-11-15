@@ -1,5 +1,5 @@
 // Arreglo que contiene las intrucciones del juego 
-var instrucciones = [];
+var instrucciones = ["Utilizar las flechas del teclado para armar el rompecabezas", "Ordenar las piezas del rompecabezas hasta obetener la imagen objetivo"];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
@@ -21,7 +21,9 @@ Cada elemento de este arreglo deberá ser mostrado en la lista con id 'lista-ins
 Para eso deberás usar la función ya implementada mostrarInstruccionEnLista().
 Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
-    //COMPLETAR
+    for (i = 0; i < instrucciones.length - 1, i++) {
+        mostrarInstruccionEnLista(instrucciones[i], "lista-instrucciones");
+    }
 }
 
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
