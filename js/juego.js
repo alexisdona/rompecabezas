@@ -43,7 +43,15 @@ function agregarMovimientos(codigoDireccion) {
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
-    return (grilla === grillaOrdenada);
+    var i;
+    var j;
+    var ordenada = true;
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            ordenada = ordenada && (grilla[i][j] === grillaOrdenada[i][j]);
+        }
+    } //comparar recorriendo elemento a elemento a ver si es igual que el elemento de grillaORdenada
+    return ordenada;
 }
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
@@ -89,26 +97,26 @@ function moverEnDireccion(direccion) {
 
     // Mueve pieza hacia la abajo, reemplazandola con la blanca
     if (direccion === codigosDireccion.ABAJO) {
-        nuevaFilaPiezaVacia = filaVacia - 1;
+        nuevaFilaPiezaVacia = filaVacia + 1;
         nuevaColumnaPiezaVacia = columnaVacia;
     }
 
     // Mueve pieza hacia arriba, reemplazandola con la blanca
     else if (direccion === codigosDireccion.ARRIBA) {
-        nuevaFilaPiezaVacia = filaVacia + 1;
+        nuevaFilaPiezaVacia = filaVacia - 1;
         nuevaColumnaPiezaVacia = columnaVacia;
     }
 
     // Mueve pieza hacia la derecha, reemplazandola con la blanca
     else if (direccion === codigosDireccion.DERECHA) {
         nuevaFilaPiezaVacia = filaVacia;
-        nuevaColumnaPiezaVacia = columnaVacia - 1;
+        nuevaColumnaPiezaVacia = columnaVacia + 1;
     }
 
     // Mueve pieza hacia la izquierda, reemplazandola con la blanca
     else if (direccion === codigosDireccion.IZQUIERDA) {
         nuevaFilaPiezaVacia = filaVacia;
-        nuevaColumnaPiezaVacia = columnaVacia + 1;
+        nuevaColumnaPiezaVacia = columnaVacia - 1;
     }
 
     /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
@@ -151,13 +159,13 @@ el intercambio en la pantalla (DOM). Para que funcione debera estar implementada
 la funcion intercambiarPosicionesGrilla() */
 function intercambiarPosiciones(fila1, columna1, fila2, columna2) {
     // Intercambio posiciones en la grilla
-    console.log(fila1, columna1, fila2, columna2)
+    //  console.log(fila1, columna1, fila2, columna2)
     var pieza1 = grilla[fila1][columna1];
     var pieza2 = grilla[fila2][columna2];
 
 
     intercambiarPosicionesGrilla(fila1, columna1, fila2, columna2);
-    console.log(pieza1, pieza2)
+    //   console.log(pieza1, pieza2)
     intercambiarPosicionesDOM('pieza' + pieza1, 'pieza' + pieza2);
 
 }
@@ -169,10 +177,6 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2) {
     // Intercambio posiciones en el DOM
     var elementoPieza1 = document.getElementById(idPieza1);
     var elementoPieza2 = document.getElementById(idPieza2);
-
-    console.log(idPieza1)
-    console.log(idPieza2)
-
 
     var padre = elementoPieza1.parentNode;
 
