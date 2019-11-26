@@ -11,7 +11,11 @@ var grilla = [
     [7, 8, 9]
 ];
 
-var grillaOrdenada = grilla;
+var grillaOrdenada = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
 
 /* Estas dos variables son para guardar la posición de la pieza vacía. 
 Esta posición comienza siendo la [2, 2]*/
@@ -58,7 +62,7 @@ En vez de intercambiar esos valores vamos a terminar teniendo en ambas posicione
 Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
-    var temporal = grilla[filaPos1, columnaPos1]
+    var temporal = grilla[filaPos1][columnaPos1];
     grilla[filaPos1][columnaPos1] = grilla[filaPos2][columnaPos2];
     grilla[filaPos2][columnaPos2] = temporal;
 
@@ -73,7 +77,7 @@ function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
-    return (fila < 3 || columna < 3);
+    return ((fila >= 0 && fila < 3) && (columna >= 0 && columna < 3));
 
 }
 
@@ -147,10 +151,13 @@ el intercambio en la pantalla (DOM). Para que funcione debera estar implementada
 la funcion intercambiarPosicionesGrilla() */
 function intercambiarPosiciones(fila1, columna1, fila2, columna2) {
     // Intercambio posiciones en la grilla
+    console.log(fila1, columna1, fila2, columna2)
     var pieza1 = grilla[fila1][columna1];
     var pieza2 = grilla[fila2][columna2];
 
+
     intercambiarPosicionesGrilla(fila1, columna1, fila2, columna2);
+    console.log(pieza1, pieza2)
     intercambiarPosicionesDOM('pieza' + pieza1, 'pieza' + pieza2);
 
 }
@@ -162,6 +169,10 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2) {
     // Intercambio posiciones en el DOM
     var elementoPieza1 = document.getElementById(idPieza1);
     var elementoPieza2 = document.getElementById(idPieza2);
+
+    console.log(idPieza1)
+    console.log(idPieza2)
+
 
     var padre = elementoPieza1.parentNode;
 
